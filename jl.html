@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>用户注册</title>
     <style>
-        /* 添加一些简单的样式 */
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -69,22 +68,19 @@
     </form>
 
     <script>
-        // 获取头像输入框和预览区域
         const avatarInput = document.getElementById('avatar');
         const avatarPreview = document.getElementById('avatarPreview');
 
-        // 监听文件选择事件
         avatarInput.addEventListener('change', function(event) {
-            const file = event.target.files[0]; // 获取用户选择的文件
+            const file = event.target.files[0];
             if (file) {
-                const reader = new FileReader(); // 创建FileReader对象
+                const reader = new FileReader();
                 reader.onload = function(e) {
                     // 将图片显示在预览区域
-                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览">`;
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 100%; max-height: 200px;">`;
                 };
-                reader.readAsDataURL(file); // 读取文件为Data URL
+                reader.readAsDataURL(file);
             } else {
-                // 如果没有选择文件，清空预览区域
                 avatarPreview.innerHTML = '';
             }
         });
