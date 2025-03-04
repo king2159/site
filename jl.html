@@ -35,7 +35,8 @@
         <input type="email" placeholder="请输入您的邮箱"><br>
 
         <label>用户头像:</label>
-        <input type="file" accept="image/*"><br>
+        <input type="file" id="avatar" accept="image/*"><br>
+        <div id="avatarPreview"></div>
 
         <label>您的家庭住址是:</label>
         <select>
@@ -45,5 +46,23 @@
         <label>您的建议或者意见:</label>
         <textarea rows="4" cols="50"></textarea><br>
     </form>
+
+    <script>
+        const avatarInput = document.getElementById('avatar');
+        const avatarPreview = document.getElementById('avatarPreview');
+
+        avatarInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 200px; max-height: 200px;">`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                avatarPreview.innerHTML = '';
+            }
+        });
+    </script>
 </body>
 </html>
