@@ -6,51 +6,29 @@
 </head>
 <body>
     <h1>用户注册</h1>
-    <form>
-        用户名：<br>
-        <input type="text" name="username" value="zhangsan"><br><br>
-        
-        用户密码：<br>
-        <input type="password" name="password"><br><br>
-        
-        用户性别：<br>
-        <input type="radio" name="gender" value="male" checked> 男<br>
-        <input type="radio" name="gender" value="female"> 女<br><br>
-        
-        爱好：<br>
-        <input type="checkbox" name="hobby" value="足球"> 足球<br>
-        <input type="checkbox" name="hobby" value="篮球"> 篮球<br>
-        <input type="checkbox" name="hobby" value="LOL"> LOL<br>
-        <input type="checkbox" name="hobby" value="韩剧"> 韩剧<br>
-        <input type="checkbox" name="hobby" value="王者荣耀"> 王者荣耀<br><br>
-        
-        邮箱：<br>
-        <input type="email" name="email" placeholder="请输入您的邮箱"><br><br>
-        
-        用户头像：<br>
-        <input type="file" name="avatar" accept="image/*" onchange="previewImage()"><br>
-        <img id="avatarPreview" src="#" alt="图片预览" style="max-width: 200px; max-height: 200px; display: none;"><br><br>
-        
-        您的家庭住址是：<br>
-        <select name="address">
-            <option value="陕西">陕西</option>
-            <!-- 其他省份选项 -->
-        </select><br><br>
-        
-        您的建议或者意见：<br>
-        <textarea name="suggestions" rows="4" cols="50"></textarea><br><br>
-    </form>
+    用户名称:<input type="text" value="zhangsan"><br>
+    用户密码:<input type="password"><br>
+    用户性别:<input type="radio" name="gender" value="male" checked>男 <input type="radio" name="gender" value="female">女<br>
+    爱好:<input type="checkbox" name="hobby" value="足球">足球 <input type="checkbox" name="hobby" value="篮球">篮球 <input type="checkbox" name="hobby" value="LOL">LOL <input type="checkbox" name="hobby" value="韩剧">韩剧 <input type="checkbox" name="hobby" value="王者荣耀">王者荣耀<br>
+    邮箱:<input type="email" placeholder="请输入您的邮箱"><br>
+    用户头像:<input type="file" accept="image/*" onchange="previewImage()"><br>
+    您的家庭住址是:<select>
+        <option value="陕西">陕西</option>
+    </select><br>
+    您的建议或者意见:<textarea rows="4" cols="50">您的建议或者意见</textarea><br>
 
     <script>
         function previewImage() {
             const fileInput = document.querySelector('input[type="file"]');
-            const preview = document.getElementById('avatarPreview');
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '200px';
+                    img.style.maxHeight = '200px';
+                    document.body.appendChild(img);
                 };
                 reader.readAsDataURL(file);
             }
