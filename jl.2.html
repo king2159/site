@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <style>
+        table {
+            width: 600px;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid transparent; /* 设置边框颜色为透明 */
+            padding: 8px;
+        }
+
+        th {
+            background-color: transparent; /* 设置背景颜色为透明（可选） */
+            text-align: right;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <form>
+        <table>
+            <tr>
+                <th>用户名:</th>
+                <td>
+                    <input type="text" value="zhangsan">
+                </td>
+            </tr>
+            <tr>
+                <th>用户密码:</th>
+                <td>
+                    <input type="password">
+                </td>
+            </tr>
+            <tr>
+                <th>用户性别:</th>
+                <td>
+                    <input type="radio" name="gender" value="男"><label>男</label>
+                    <input type="radio" name="gender" value="女"><label>女</label>
+                </td>
+            </tr>
+            <tr>
+                <th>爱好:</th>
+                <td>
+                    <input type="checkbox" name="hobby" value="足球"><label>足球</label>
+                    <input type="checkbox" name="hobby" value="篮球"><label>篮球</label>
+                    <input type="checkbox" name="hobby" value="LOL"><label>LOL</label>
+                    <input type="checkbox" name="hobby" value="韩剧"><label>韩剧</label>
+                    <input type="checkbox" name="hobby" value="王者荣耀"><label>王者荣耀</label>
+                </td>
+            </tr>
+            <tr>
+                <th>邮箱:</th>
+                <td>
+                    <input type="email" placeholder="请输入您的邮箱">
+                </td>
+            </tr>
+            <tr>
+                <th>用户头像:</th>
+                <td>
+                    <input type="file" id="avatar" accept="image/*">
+                    <div id="avatarPreview"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>您的家庭住址是:</th>
+                <td>
+                    <select>
+                        <option value="陕西">陕西</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>您的建议或者意见:</th>
+                <td>
+                    <textarea rows="4" cols="50"></textarea>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        const avatarInput = document.getElementById('avatar');
+        const avatarPreview = document.getElementById('avatarPreview');
+
+        avatarInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 200px; max-height: 200px;">`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                avatarPreview.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
