@@ -3,33 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="password"], input[type="email"], textarea {
-            width: 200px;
-            margin-top: 5px;
-        }
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 5px;
-        }
-        #preview {
-            max-width: 100px;
-            max-height: 100px;
-            border: 1px solid #ddd;
-            padding: 5px;
-            margin-top: 5px;
-        }
-    </style>
 </head>
 <body>
+    <h1>用户注册</h1>
     <form>
-        <h1>用户注册</h1>
         <label for="username">用户名：</label>
         <input type="text" id="username" name="username" value="zhangsan"><br><br>
         
@@ -44,13 +21,13 @@
         
         <label>爱好：</label>
         <input type="checkbox" id="football" name="hobby" value="足球">
-        <label for="football">足球</label>
+        <label for="football">足球</label><br>
         <input type="checkbox" id="basketball" name="hobby" value="篮球">
-        <label for="basketball">篮球</label>
+        <label for="basketball">篮球</label><br>
         <input type="checkbox" id="lol" name="hobby" value="LOL">
-        <label for="lol">LOL</label>
+        <label for="lol">LOL</label><br>
         <input type="checkbox" id="koreanDrama" name="hobby" value="韩剧">
-        <label for="koreanDrama">韩剧</label>
+        <label for="koreanDrama">韩剧</label><br>
         <input type="checkbox" id="kingOfGlory" name="hobby" value="王者荣耀">
         <label for="kingOfGlory">王者荣耀</label><br><br>
         
@@ -59,7 +36,7 @@
         
         <label for="avatar">用户头像：</label>
         <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewFile()"><br>
-        <img id="preview" src="#" alt="Image Preview"><br><br>
+        <img id="preview" src="#" alt="未选择文件" style="display:none;"><br><br>
         
         <label for="address">您的家庭住址是：</label>
         <select id="address" name="address">
@@ -68,7 +45,7 @@
         </select><br><br>
         
         <label for="suggestions">您的建议或者意见</label><br>
-        <textarea id="suggestions" name="suggestions" rows="4" cols="50">您的建议 或者 意见</textarea><br><br>
+        <textarea id="suggestions" name="suggestions" rows="4" cols="50" placeholder="您的建议 或者 意见"></textarea><br><br>
     </form>
 
     <script>
@@ -79,9 +56,12 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
+                    preview.style.display = 'block';
                     preview.src = e.target.result;
                 };
                 reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
             }
         }
     </script>
