@@ -3,126 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        form {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
-        }
-        label {
-            display: inline-block;
-            width: 80px;
-        }
-        input, select, textarea {
-            display: inline-block;
-            width: calc(100% - 80px);
-            padding: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .avatar-preview {
-            margin-top: 10px;
-            text-align: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            max-width: 200px;
-        }
-        .avatar-preview img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
     <h1>用户注册</h1>
     <form>
-        <div class="form-group">
-            <label for="username">用户名:</label>
-            <input type="text" id="username" name="username" value="zhangsan">
-        </div>
+        <label>用户名:</label>
+        <input type="text" value="zhangsan"><br>
 
-        <div class="form-group">
-            <label for="password">用户密码:</label>
-            <input type="password" id="password" name="password">
-        </div>
+        <label>用户密码:</label>
+        <input type="password"><br>
 
-        <div class="form-group">
-            <label>用户性别:</label>
-            <input type="radio" id="male" name="gender" value="男">
-            <label for="male">男</label>
-            <input type="radio" id="female" name="gender" value="女">
-            <label for="female">女</label>
-        </div>
+        <label>用户性别:</label>
+        <input type="radio" name="gender" value="男">
+        <label>男</label>
+        <input type="radio" name="gender" value="女">
+        <label>女</label><br>
 
-        <div class="form-group">
-            <label>爱好:</label>
-            <input type="checkbox" id="football" name="hobby" value="足球">
-            <label for="football">足球</label>
-            <input type="checkbox" id="basketball" name="hobby" value="篮球">
-            <label for="basketball">篮球</label>
-            <input type="checkbox" id="lol" name="hobby" value="LOL">
-            <label for="lol">LOL</label>
-            <input type="checkbox" id="kdrama" name="hobby" value="韩剧">
-            <label for="kdrama">韩剧</label>
-            <input type="checkbox" id="wangzhe" name="hobby" value="王者荣耀">
-            <label for="wangzhe">王者荣耀</label>
-        </div>
+        <label>爱好:</label>
+        <input type="checkbox" name="hobby" value="足球">
+        <label>足球</label>
+        <input type="checkbox" name="hobby" value="篮球">
+        <label>篮球</label>
+        <input type="checkbox" name="hobby" value="LOL">
+        <label>LOL</label>
+        <input type="checkbox" name="hobby" value="韩剧">
+        <label>韩剧</label>
+        <input type="checkbox" name="hobby" value="王者荣耀">
+        <label>王者荣耀</label><br>
 
-        <div class="form-group">
-            <label for="email">邮箱:</label>
-            <input type="email" id="email" name="email" placeholder="请输入您的邮箱">
-        </div>
+        <label>邮箱:</label>
+        <input type="email" placeholder="请输入您的邮箱"><br>
 
-        <div class="form-group">
-            <label for="avatar">用户头像:</label>
-            <input type="file" id="avatar" name="avatar" accept="image/*">
-            <div id="avatarPreview" class="avatar-preview">
-                <!-- 图片预览将显示在这里 -->
-            </div>
-        </div>
+        <label>用户头像:</label>
+        <input type="file" accept="image/*"><br>
 
-        <div class="form-group">
-            <label for="address">您的家庭住址是:</label>
-            <select id="address" name="address">
-                <option value="陕西">陕西</option>
-            </select>
-        </div>
+        <label>您的家庭住址是:</label>
+        <select>
+            <option value="陕西">陕西</option>
+        </select><br>
 
-        <div class="form-group">
-            <label for="feedback">您的建议或者意见:</label>
-            <textarea id="feedback" name="feedback" rows="4"></textarea>
-        </div>
+        <label>您的建议或者意见:</label>
+        <textarea rows="4" cols="50"></textarea><br>
     </form>
-
-    <script>
-        const avatarInput = document.getElementById('avatar');
-        const avatarPreview = document.getElementById('avatarPreview');
-
-        avatarInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览">`;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                avatarPreview.innerHTML = '';
-            }
-        });
-    </script>
 </body>
 </html>
