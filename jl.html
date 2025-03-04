@@ -3,6 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
+    <style>
+        /* 添加一些简单的样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 500px;
+        }
+        label, input, select, textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #avatarPreview {
+            max-width: 200px;
+            max-height: 200px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>用户注册</h1>
@@ -35,7 +56,8 @@
         <input type="email" id="email" name="email" placeholder="请输入您的邮箱"><br><br>
 
         <label for="avatar">用户头像:</label>
-        <input type="file" id="avatar" name="avatar"><br><br>
+        <input type="file" id="avatar" name="avatar" accept="image/*"><br><br>
+        <div id="avatarPreview"></div>
 
         <label for="address">您的家庭住址是:</label>
         <select id="address" name="address">
@@ -45,5 +67,27 @@
         <label for="feedback">您的建议或者意见:</label><br>
         <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
     </form>
+
+    <script>
+        // 获取头像输入框和预览区域
+        const avatarInput = document.getElementById('avatar');
+        const avatarPreview = document.getElementById('avatarPreview');
+
+        // 监听文件选择事件
+        avatarInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // 获取用户选择的文件
+            if (file) {
+                const reader = new FileReader(); // 创建FileReader对象
+                reader.onload = function(e) {
+                    // 将图片显示在预览区域
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览">`;
+                };
+                reader.readAsDataURL(file); // 读取文件为Data URL
+            } else {
+                // 如果没有选择文件，清空预览区域
+                avatarPreview.innerHTML = '';
+            }
+        });
+    </script>
 </body>
 </html>
