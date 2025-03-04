@@ -10,61 +10,87 @@
         }
         form {
             max-width: 500px;
+            margin: 0 auto;
         }
         label, input, select, textarea {
             display: block;
             margin-bottom: 10px;
         }
-        #avatarPreview {
-            max-width: 200px;
-            max-height: 200px;
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .avatar-preview {
+            text-align: center;
             margin-top: 10px;
             border: 1px solid #ccc;
-            padding: 5px;
+            padding: 10px;
+            max-width: 200px;
+        }
+        .avatar-preview img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <h1>用户注册</h1>
     <form>
-        <label for="username">用户名:</label>
-        <input type="text" id="username" name="username" value="zhangsan"><br><br>
+        <div class="form-group">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" value="zhangsan">
+        </div>
 
-        <label for="password">用户密码:</label>
-        <input type="password" id="password" name="password"><br><br>
+        <div class="form-group">
+            <label for="password">用户密码:</label>
+            <input type="password" id="password" name="password">
+        </div>
 
-        <label>用户性别:</label>
-        <input type="radio" id="male" name="gender" value="男">
-        <label for="male">男</label>
-        <input type="radio" id="female" name="gender" value="女">
-        <label for="female">女</label><br><br>
+        <div class="form-group">
+            <label>用户性别:</label>
+            <input type="radio" id="male" name="gender" value="男">
+            <label for="male">男</label>
+            <input type="radio" id="female" name="gender" value="女">
+            <label for="female">女</label>
+        </div>
 
-        <label>爱好:</label>
-        <input type="checkbox" id="football" name="hobby" value="足球">
-        <label for="football">足球</label>
-        <input type="checkbox" id="basketball" name="hobby" value="篮球">
-        <label for="basketball">篮球</label>
-        <input type="checkbox" id="lol" name="hobby" value="LOL">
-        <label for="lol">LOL</label>
-        <input type="checkbox" id="kdrama" name="hobby" value="韩剧">
-        <label for="kdrama">韩剧</label>
-        <input type="checkbox" id="wangzhe" name="hobby" value="王者荣耀">
-        <label for="wangzhe">王者荣耀</label><br><br>
+        <div class="form-group">
+            <label>爱好:</label>
+            <input type="checkbox" id="football" name="hobby" value="足球">
+            <label for="football">足球</label>
+            <input type="checkbox" id="basketball" name="hobby" value="篮球">
+            <label for="basketball">篮球</label>
+            <input type="checkbox" id="lol" name="hobby" value="LOL">
+            <label for="lol">LOL</label>
+            <input type="checkbox" id="kdrama" name="hobby" value="韩剧">
+            <label for="kdrama">韩剧</label>
+            <input type="checkbox" id="wangzhe" name="hobby" value="王者荣耀">
+            <label for="wangzhe">王者荣耀</label>
+        </div>
 
-        <label for="email">邮箱:</label>
-        <input type="email" id="email" name="email" placeholder="请输入您的邮箱"><br><br>
+        <div class="form-group">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email" placeholder="请输入您的邮箱">
+        </div>
 
-        <label for="avatar">用户头像:</label>
-        <input type="file" id="avatar" name="avatar" accept="image/*"><br><br>
-        <div id="avatarPreview"></div>
+        <div class="form-group">
+            <label for="avatar">用户头像:</label>
+            <input type="file" id="avatar" name="avatar" accept="image/*">
+            <div id="avatarPreview" class="avatar-preview">
+                <!-- 图片预览将显示在这里 -->
+            </div>
+        </div>
 
-        <label for="address">您的家庭住址是:</label>
-        <select id="address" name="address">
-            <option value="陕西">陕西</option>
-        </select><br><br>
+        <div class="form-group">
+            <label for="address">您的家庭住址是:</label>
+            <select id="address" name="address">
+                <option value="陕西">陕西</option>
+            </select>
+        </div>
 
-        <label for="feedback">您的建议或者意见:</label><br>
-        <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+        <div class="form-group">
+            <label for="feedback">您的建议或者意见:</label>
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+        </div>
     </form>
 
     <script>
@@ -77,7 +103,7 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     // 将图片显示在预览区域
-                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 100%; max-height: 200px;">`;
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览">`;
                 };
                 reader.readAsDataURL(file);
             } else {
