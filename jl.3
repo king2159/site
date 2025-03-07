@@ -1,0 +1,117 @@
+<style>
+  td.label {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    width: 20%;  /* 固定标签列宽度 */
+  }
+  td.value {
+    background-color: #ffffff;
+    color: #000;
+    padding: 8px;
+    border: 1px solid #ddd;
+    width: 30%;  /* 固定值列宽度 */
+  }
+  img.photo {
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+  }
+</style>
+
+<table>
+  <!-- 照片行（独立一行） -->
+  <tr>
+    <td class="label">照片</td>
+    <td class="value" colspan="3">
+      <img 
+        src="https://example.com/your-photo.jpg" 
+        alt="个人照片" 
+        class="photo"
+      >
+    </td>
+  </tr>
+
+  <!-- 基础信息（严格保持原表格结构） -->
+  <tr>
+    <td class="label">姓名</td>
+    <td class="value">简小丽</td>
+    <td class="label">年龄</td>
+    <td class="value">26</td>
+  </tr>
+  <tr>
+    <td class="label">性别</td>
+    <td class="value">女</td>
+    <td class="label">地址</td>
+    <td class="value">湖南 长沙 岳麓区</td>
+  </tr>
+  <tr>
+    <td class="label">电话</td>
+    <td class="value">135-0000-0000</td>
+    <td class="label">婚姻状况</td>
+    <td class="value">已婚</td>
+  </tr>
+
+  <!-- 分隔线 -->
+  <tr><td colspan="4" style="height: 1px; background: #ddd; padding: 0;"></td></tr>
+
+  <!-- 求职意向（单行跨列） -->
+  <tr>
+    <td class="label">求职意向</td>
+    <td class="value" colspan="3">区域经理</td>
+  </tr>
+
+  <!-- 分隔线 -->
+  <tr><td colspan="4" style="height: 1px; background: #ddd; padding: 0;"></td></tr>
+
+  <!-- 工作经历（多行内容） -->
+  <tr>
+    <td class="label">工作经历</td>
+    <td class="value" colspan="3">
+      <p>一、社区服务站慢病管理员</p>
+      <p>1. 负责为客户进行体检并解决体检结果。</p>
+      <p>2. 评估客户的健康状况和所患疾病危险性；进行健康咨询与指导。</p>
+      <p>3. 对患者进行糖尿病、高血压检测工作。</p>
+      <p>二、药店员（工作经验四年）</p>
+      <p>1. 负责接待顾客的咨询，了解顾客的需求并达成销售；</p>
+      <p>2. 负责做好货品销售记录、盘点、账目核对等工作；</p>
+    </td>
+  </tr>
+
+  <!-- 分隔线 -->
+  <tr><td colspan="4" style="height: 1px; background: #ddd; padding: 0;"></td></tr>
+
+  <!-- 教育经历 -->
+  <tr>
+    <td class="label">教育经历</td>
+    <td class="value" colspan="3">中专学历（正在就读成人高考）</td>
+  </tr>
+
+  <!-- 分隔线 -->
+  <tr><td colspan="4" style="height: 1px; background: #ddd; padding: 0;"></td></tr>
+
+  <!-- 社会关系 -->
+  <tr>
+    <td class="label">社会关系</td>
+    <td class="value" colspan="3">
+      <p>1. 家人从事教育行业老师和学校领导等工作。</p>
+      <p>2. 本人对象有很多老板是朋友关系，具有一定的社会关系。</p>
+    </td>
+  </tr>
+
+  <!-- 分隔线 -->
+  <tr><td colspan="4" style="height: 1px; background: #ddd; padding: 0;"></td></tr>
+
+  <!-- 自我评价 -->
+  <tr>
+    <td class="label">自我评价</td>
+    <td class="value" colspan="3">
+      <p>1. 对于市场具有一定的观察诊断能力，了解当地市场人流量、竞争情况、消费喜好、消费者分布情况。</p>
+      <p>2. 对于产品、人员、价格等具有一定的管理能力。</p>
+      <p>3. 对于营销知识及品牌知识具有一定的了解。</p>
+    </td>
+  </tr>
+</table>
