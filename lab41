@@ -1,9 +1,39 @@
-AccessDeniedAccess Denied06P05PTY3YHCXZCAMI9trb1x7bgbUGAuex2TPG7WY46j025YwA/P9LEmXSER4U0YYLjMKY0emmpZeTYS9YZiGKpQoJL89VJzlNGfsg==
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<Error>
-<Code>AccessDenied</Code>
-<Message>Access Denied</Message>
-<RequestId>06P05PTY3YHCXZCA</RequestId>
-<HostId>MI9trb1x7bgbUGAuex2TPG7WY46j025YwA/P9LEmXSER4U0YYLjMKY0emmpZeTYS9YZiGKpQoJL89VJzlNGfsg==</HostId>
-...
-</Error>
+<html>
+<body>
+<style>
+#a {
+    background-color: red;
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+#b {
+    background-color: yellow;
+    width: 200px;
+    height: 100px;
+    transform: skewY(30deg);
+    position: absolute;
+    left: 200px;
+    top: 50px;
+    transform-origin: left top;
+}
+
+#c {
+    background-color: green;
+    width: 200px;
+    height: 100px;
+    transform: skewX(30deg);
+    position: absolute;
+    left: 50px;
+    top: 200px;
+    transform-origin: left top;
+}
+</style>
+<div id=a></div>
+<div id=b></div>
+<div id=c></div>
+</body>
+</html>
