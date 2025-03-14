@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>用户注册与动画展示</title>
+    <title>用户注册</title>
     <style>
         /* 动画径向渐变背景的椭圆 */
         .animated-ellipse {
@@ -27,64 +27,84 @@
             }
         }
 
-        /* 使用 CSS Grid 布局的简历 */
-        .resume {
+        /* 使用 CSS Grid 布局的表单 */
+        .form-container {
             display: grid;
-            grid-template-columns: 1fr 3fr;
-            grid-gap: 20px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .sidebar {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 5px;
+        .form-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+            align-items: center;
         }
 
-        .main-content {
-            padding: 20px;
-            border-radius: 5px;
+        .form-grid label {
+            text-align: right;
+            padding-right: 10px;
         }
 
-        .section {
-            margin-bottom: 30px;
+        .form-grid .input-group {
+            grid-column: 2;
         }
 
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
+        .form-grid .radio-group,
+        .form-grid .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .form-grid .checkbox-group {
+            flex-wrap: wrap;
         }
 
-        li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .form-grid .file-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-grid .preview {
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .form-grid select,
+        .form-grid textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-grid h1 {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 0;
         }
 
         /* 用户注册表单样式 */
-        table {
-            width: 600px;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            border: 1px solid transparent; /* 设置边框颜色为透明 */
+        .form-grid input[type="text"],
+        .form-grid input[type="password"],
+        .form-grid input[type="email"] {
+            width: 100%;
             padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
-        th {
-            background-color: transparent; /* 设置背景颜色为透明（可选） */
-            text-align: right;
-            width: 150px;
+        .form-grid input[type="radio"],
+        .form-grid input[type="checkbox"] {
+            margin: 0;
         }
     </style>
 </head>
@@ -93,69 +113,65 @@
     <div class="animated-ellipse"></div>
 
     <!-- 用户注册表单 -->
-    <h1>用户注册</h1>
-    <form>
-        <table>
-            <tr>
-                <th>用户名:</th>
-                <td>
-                    <input type="text" value="zhangsan">
-                </td>
-            </tr>
-            <tr>
-                <th>用户密码:</th>
-                <td>
-                    <input type="password">
-                </td>
-            </tr>
-            <tr>
-                <th>用户性别:</th>
-                <td>
-                    <input type="radio" name="gender" value="男"><label>男</label>
-                    <input type="radio" name="gender" value="女"><label>女</label>
-                </td>
-            </tr>
-            <tr>
-                <th>爱好:</th>
-                <td>
-                    <input type="checkbox" name="hobby" value="足球"><label>乒乓球</label>
-                    <input type="checkbox" name="hobby" value="篮球"><label>篮球</label>
-                    <input type="checkbox" name="hobby" value="LOL"><label>足球</label>
-                    <input type="checkbox" name="hobby" value="韩剧"><label>吉他</label>
-                    <input type="checkbox" name="hobby" value="王者荣耀"><label>唱歌</label>
-                </td>
-            </tr>
-            <tr>
-                <th>邮箱:</th>
-                <td>
-                    <input type="email" placeholder="请输入您的邮箱">
-                </td>
-            </tr>
-            <tr>
-                <th>用户头像:</th>
-                <td>
-                    <input type="file" id="avatar" accept="image/*">
-                    <div id="avatarPreview"></div>
-                </td>
-            </tr>
-            <tr>
-                <th>您的家庭住址是:</th>
-                <td>
-                    <select>
-                        <option value="宁波">宁波</option>
-                        <option value="陕西">陕西</option>
-                        <option value="四川">四川</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>您的建议或者意见:</th>
-                <td>
-                    <textarea rows="4" cols="50"></textarea>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="form-container">
+        <h1>用户注册</h1>
+        <form class="form-grid">
+            <label for="username">用户名:</label>
+            <div class="input-group">
+                <input type="text" id="username" value="zhangsan">
+            </div>
+
+            <label for="password">用户密码:</label>
+            <div class="input-group">
+                <input type="password" id="password">
+            </div>
+
+            <label>用户性别:</label>
+            <div class="radio-group input-group">
+                <input type="radio" id="male" name="gender" value="男">
+                <label for="male">男</label>
+                <input type="radio" id="female" name="gender" value="女">
+                <label for="female">女</label>
+            </div>
+
+            <label>爱好:</label>
+            <div class="checkbox-group input-group">
+                <input type="checkbox" id="hobby1" name="hobby" value="足球">
+                <label for="hobby1">足球</label>
+                <input type="checkbox" id="hobby2" name="hobby" value="篮球">
+                <label for="hobby2">篮球</label>
+                <input type="checkbox" id="hobby3" name="hobby" value="LOL">
+                <label for="hobby3">LOL</label>
+                <input type="checkbox" id="hobby4" name="hobby" value="韩剧">
+                <label for="hobby4">韩剧</label>
+                <input type="checkbox" id="hobby5" name="hobby" value="王者荣耀">
+                <label for="hobby5">王者荣耀</label>
+            </div>
+
+            <label for="email">邮箱:</label>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="请输入您的邮箱">
+            </div>
+
+            <label for="avatar">用户头像:</label>
+            <div class="file-group input-group">
+                <input type="file" id="avatar" accept="image/*">
+                <div id="avatarPreview" class="preview"></div>
+            </div>
+
+            <label for="address">您的家庭住址是:</label>
+            <div class="input-group">
+                <select id="address">
+                    <option value="陕西">陕西</option>
+                </select>
+            </div>
+
+            <label for="suggestion">您的建议或者意见:</label>
+            <div class="input-group">
+                <textarea id="suggestion" rows="4" cols="50"></textarea>
+            </div>
+        </form>
+    </div>
 
     <script>
         const avatarInput = document.getElementById('avatar');
@@ -166,7 +182,7 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 200px; max-height: 200px;">`;
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 100%; max-height: 100%;">`;
                 };
                 reader.readAsDataURL(file);
             } else {
