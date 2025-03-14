@@ -2,193 +2,154 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>用户注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历 - 简小丽</title>
     <style>
-        /* 动画径向渐变背景的椭圆 */
-        .animated-ellipse {
-            width: 300px;
-            height: 200px;
-            background: radial-gradient(circle, #ff0000, #0000ff);
-            border-radius: 50%;
-            animation: animateGradient 5s infinite;
-            margin: 20px auto;
-            display: block;
-        }
-
-        @keyframes animateGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* 使用 CSS Grid 布局的表单 */
-        .form-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .form-grid label {
-            text-align: right;
-            padding-right: 10px;
-        }
-
-        .form-grid .input-group {
-            grid-column: 2;
-        }
-
-        .form-grid .radio-group,
-        .form-grid .checkbox-group {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .form-grid .checkbox-group {
-            flex-wrap: wrap;
-        }
-
-        .form-grid .file-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .form-grid .preview {
-            max-width: 200px;
-            max-height: 200px;
-            border: 1px solid #ddd;
-            padding: 5px;
-        }
-
-        .form-grid select,
-        .form-grid textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .form-grid h1 {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin-top: 0;
-        }
-
-        /* 用户注册表单样式 */
-        .form-grid input[type="text"],
-        .form-grid input[type="password"],
-        .form-grid input[type="email"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .form-grid input[type="radio"],
-        .form-grid input[type="checkbox"] {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .resume-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            background-color: #e8e8e8;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        
+        .main-content {
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 180px;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .job-intent, .personal-info, .honor {
+            margin-bottom: 20px;
+        }
+        
+        .personal-info p, .honor p {
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .skill-list, .project-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+        
+        .skill-list li, .project-list li {
+            margin-bottom: 5px;
+        }
+        
+        .project-year {
+            font-weight: bold;
+            margin: 15px 0 5px;
+        }
+        
+        .honor-title {
+            text-align: center;
+            border: 1px solid #000;
+            padding: 5px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- 动画径向渐变背景的椭圆 -->
-    <div class="animated-ellipse"></div>
-
-    <!-- 用户注册表单 -->
-    <div class="form-container">
-        <h1><span style="margin-left: 350px;"></span>用户注册</h1>
-        <form class="form-grid">
-            <label for="username">用户名:</label>
-            <div class="input-group">
-                <input type="text" id="username" value="zhangsan">
+    <div class="resume-container">
+        <div class="sidebar">
+            <div class="profile-img"></div>
+            <div class="name">简小丽</div>
+            <div class="job-intent">求职意向: 区域经理</div>
+            
+            <div class="personal-info">
+                <p>年龄: 26</p>
+                <p>性别: 女</p>
+                <p>婚姻状况: 已婚</p>
+                <p>电话: 135-0000-0000</p>
+                <p>地址: 湖南 长沙 岳麓区</p>
             </div>
-
-            <label for="password">用户密码:</label>
-            <div class="input-group">
-                <input type="password" id="password">
+            
+            <div class="personal-info">
+                <p>教育背景: 中专学历</p>
+                <p>目前状态: 正在就读成人高考</p>
             </div>
-
-            <label>用户性别:</label>
-            <div class="radio-group input-group">
-                <input type="radio" id="male" name="gender" value="男">
-                <label for="male">男</label>
-                <input type="radio" id="female" name="gender" value="女">
-                <label for="female">女</label>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">自我评价</h2>
+                <p>对于市场具有一定的视察诊断能力，了解当地市场人流量、竞争情况、消费喜好、消费者分布情况。对于产品、人员、价格等具有一定的管理能力。对于营销知识及品牌知识等具有一定的了解。具有一定的会预测、分析、洞察和规划布局等能力。能快速了解公司营销方案并执行等能力。</p>
+                <p>本人性格开朗，工作认真负责，具有较强的沟通能力和团队协作精神。虽然学历不高，但一直保持着积极进取的态度，不断提升自己。</p>
             </div>
-
-            <label>爱好:</label>
-            <div class="checkbox-group input-group">
-                <input type="checkbox" id="hobby1" name="hobby" value="足球">
-                <label for="hobby1">足球</label>
-                <input type="checkbox" id="hobby2" name="hobby" value="篮球">
-                <label for="hobby2">篮球</label>
-                <input type="checkbox" id="hobby3" name="hobby" value="LOL">
-                <label for="hobby3">乒乓球</label>
-                <input type="checkbox" id="hobby4" name="hobby" value="韩剧">
-                <label for="hobby4">吉他</label>
-                <input type="checkbox" id="hobby5" name="hobby" value="王者荣耀">
-                <label for="hobby5">唱歌</label>
+            
+            <div class="section">
+                <h2 class="section-title">专业技能</h2>
+                <ul class="skill-list">
+                    <li>熟悉市场调研与分析，能够准确把握市场需求和趋势。</li>
+                    <li>具备良好的客户沟通能力，能够有效了解客户需求并提供解决方案。</li>
+                    <li>掌握基本的营销策划知识，能够协助制定并执行营销方案。</li>
+                    <li>熟悉办公软件操作，如Excel、Word等，能够高效完成日常工作。</li>
+                    <li>具有一定的团队管理经验，能够协调团队成员完成任务。</li>
+                </ul>
             </div>
-
-            <label for="email">邮箱:</label>
-            <div class="input-group">
-                <input type="email" id="email" placeholder="请输入您的邮箱">
+            
+            <div class="section">
+                <h2 class="section-title">工作经历</h2>
+                <h3 class="project-year">社区服务站慢病管理员</h3>
+                <ul class="project-list">
+                    <li>负责为客户进行体检并解读体检结果。</li>
+                    <li>评估客户的健康状况和所患疾病危险性，进行健康咨询与指导。</li>
+                    <li>对患者进行糖尿病、高血压检测工作。</li>
+                </ul>
+                
+                <h3 class="project-year">药店店员（工作经验四年）</h3>
+                <ul class="project-list">
+                    <li>负责接待顾客的咨询，了解顾客的需求并达成销售。</li>
+                    <li>负责做好货品销售记录、盘点、账目核对等工作，按规定完成各项销售统计工作。</li>
+                    <li>完成商品的来货验收、上架陈列摆放、补货、退货、防损等日常营业工作。</li>
+                    <li>做好所负责区域的卫生清洁工作。</li>
+                    <li>了解公司下达的销售任务指标，进行销售任务的分解。</li>
+                    <li>对商品的价格、产地等做到了如指掌。</li>
+                </ul>
             </div>
-
-            <label for="avatar">用户头像:</label>
-            <div class="file-group input-group">
-                <input type="file" id="avatar" accept="image/*">
+            
+            <div class="section">
+                <h2 class="section-title">社会关系</h2>
+                <p>家人从事教育行业老师和学校领导等工作，具有一定的教育资源和人脉。本人对象与很多老板是朋友关系，具有一定的社会关系，能够为职业发展提供一定的支持。</p>
             </div>
-
-            <label for="address">您的家庭住址是:</label>
-            <div class="input-group">
-                <select id="address">
-                   <option value="宁波">宁波</option>
-                    <option value="陕西">陕西</option>
-                </select>
-            </div>
-
-            <label for="suggestion">您的建议或者意见:</label>
-            <div class="input-group">
-                <textarea id="suggestion" rows="4" cols="50"></textarea>
-            </div>
-        </form>
+        </div>
     </div>
-
-    <script>
-        const avatarInput = document.getElementById('avatar');
-        const avatarPreview = document.getElementById('avatarPreview');
-
-        avatarInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="头像预览" style="max-width: 100%; max-height: 100%;">`;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                avatarPreview.innerHTML = '';
-            }
-        });
-    </script>
 </body>
 </html>
