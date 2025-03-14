@@ -84,6 +84,29 @@
             padding: 5px;
             margin-bottom: 10px;
         }
+        
+        /* 动画径向渐变背景的椭圆 */
+        .animated-ellipse {
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(circle, #ff0000, #0000ff);
+            border-radius: 50%;
+            animation: animateGradient 5s infinite;
+            margin: 20px auto;
+            display: block;
+        }
+
+        @keyframes animateGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,6 +127,8 @@
             <div class="personal-info">
                 <p>教育背景: 中专学历</p>
                 <p>目前状态: 正在就读成人高考</p>
+                <!-- 椭圆插入到这里 -->
+                <div class="animated-ellipse"></div>
             </div>
         </div>
         
@@ -152,4 +177,5 @@
         </div>
     </div>
 </body>
+</html>
 </html>
