@@ -10,18 +10,29 @@
         let b = parseFloat(prompt("请输入系数 b:"));
         let c = parseFloat(prompt("请输入系数 c:"));
 
-        // 3. 计算判别式 delta
-        let delta = b * b - 4 * a * c;
+        // 检查输入是否为有效数字
+        if (isNaN(a) || isNaN(b) || isNaN(c)) {
+            alert("请输入有效的数字！");
+        } else if (a === 0) {
+            alert("a 不能为 0！");
+        } else {
+            // 3. 计算判别式 delta
+            let delta = b * b - 4 * a * c;
 
-        // 4. 计算 x1 和 x2
-        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
-        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            if (delta < 0) {
+                alert("方程无实数解！");
+            } else {
+                // 4. 计算 x1 和 x2
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);
 
-        // 5. 使用 alert 告诉用户 x1 和 x2
-        alert(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
+                // 5. 使用 alert 告诉用户 x1 和 x2
+                alert(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
 
-        // 6. 使用 console.log 向用户显示相同的结果
-        console.log(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
+                // 6. 使用 console.log 向用户显示相同的结果
+                console.log(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
+            }
+        }
     </script>
 </body>
 </html>
