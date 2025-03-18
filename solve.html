@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>二次方程求解</title>
+</head>
+<body>
+    <script>
+        // 1. 调用 prompt 函数三次获取系数 a、b、c
+        let a = parseFloat(prompt("请输入系数 a:"));
+        let b = parseFloat(prompt("请输入系数 b:"));
+        let c = parseFloat(prompt("请输入系数 c:"));
+
+        // 3. 计算判别式 delta
+        let delta = b * b - 4 * a * c;
+
+        // 4. 计算 x1 和 x2
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+        // 5. 使用 alert 告诉用户 x1 和 x2
+        alert(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
+
+        // 6. 使用 console.log 向用户显示相同的结果
+        console.log(`方程的解为：x1 = ${x1}, x2 = ${x2}`);
+    </script>
+</body>
+</html>
