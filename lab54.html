@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @keyframes fly {
+            from { top: 400px; }
+            to { top: 0px; }
+        }
+        .circle {
+            width: 50px; /* 缩小宽度 */
+            height: 50px; /* 缩小高度 */
+            border-radius: 25px; /* 调整为新的半径 */
+            background-color: blue; /* 蓝色气球 */
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function makeballoon() {
+            const balloonCount = 10; // 气球数量
+            const minDistance = 60; // 气球之间的最小距离
+            
+            for (let i = 0; i < balloonCount; i++) { /* 创建10个气球 */
+                let b = document.createElement('div');
+                b.className = 'circle';
+                b.id = 'b' + i;
+                
+                /* 计算每个气球的初始位置 */
+                let left = (window.innerWidth / balloonCount) * i + (window.innerWidth / balloonCount) / 2 - 25; // 25是气球半径
+                let top = Math.floor(Math.random() * (window.innerHeight - 50)) + 25; // 随机垂直位置
+                
+                // 确保气球之间有足够的距离
+                for (let j = 0; j < i; j++) {
+                    let prevBalloon = document.getElementById('b' + j);
+                    let distance = Math.sqrt(
+                        Math.pow(left - prevBalloon.offsetLeft, 2) + 
+                        Math.pow(top - prevBalloon.offsetTop, 2)
+                    );
+                    if (distance < minDistance) {
+                        left += minDistance - distance;
+                    }
+                }
+                
+                b.style.cssText = `position: absolute; left: ${left}px; top: ${top}px; animation: fly 3s forwards;`;
+                document.body.appendChild(b);
+            }
+        }
+
+        // 创建气球
+        makeballoon();
+    </script>
+</body>
+</html>
