@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>二次方程求根器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .graph-container {
+            width: 600px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>二次方程求根器</h1>
+
+        <div class="input-group">
+            <label for="a">系数 a：</label>
+            <input type="text" id="a" placeholder="输入数字" style="width: 100%">
+        </div>
+
+        <div class="input-group">
+            <label for="b">系数 b：</label>
+            <input type="text" id="b" placeholder="输入数字" style="width: 100%">
+        </div>
+
+        <div class="input-group">
+            <label for="c">系数 c：</label>
+            <input type="text" id="c" placeholder="输入数字" style="width: 100%">
+        </div>
+
+        <button onclick="solveEquation()">求根</button>
+
+        <div class="result" id="result">
+            根据方程 ax² + bx + c = 0 计算得到：
+            <br>
+            a = <span id="aValue">0</span>
+            <br>
+            b = <span id="bValue">0</span>
+            <br>
+            c = <span id="cValue">0</span>
+            <br>
+            根为：<span id="roots"></span>
+        </div>
+
+        <button onclick="testCase()">测试案例</button>
+
+        <canvas id="graphCanvas" width="600" height="300"></canvas>
+    </div>
+
+    <script>
+        function solveEquation() {
+            // 获取输入值
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+
+            document.getElementById('result').innerHTML = '';
+
+            if (a === 0) {
+                // 如果是一次方程，处理一次项的情况
+                if (b === 0) {
+                    if (c === 0) {
+                        // 所有实数都是解
+                        document.getElementById('roots').innerHTML = '所有实数都是解';
+                    } else {
+                        // 无解
+                        document.getElementById('roots').innerHTML = '无解';
+                    }
+                } else {
+                    const root = -c / b;
+                    document.getElementById('roots').innerHTML = `根为：x = ${root}`;
+                }
+            } else {
+                const discriminant = b * b - 4 * a * c; // 判别式
+
+                if (discriminant > 0) {
+                    const sqrtD = Math.sqrt(discriminant);
+                    const root1 = (-b + sqrtD) / (2 * a);
+                    const root2 = (-b - sqrtD) / (2 * a);
+                    document.getElementById('roots').innerHTML = `根为：x₁=${root1}, x₂=${root2}`;
+                } else if (discriminant === 0) {
+                    const root = -b / (2 * a);
+                    document.getElementById('roots').innerHTML = `根为：x = ${root}`;
+                } else {
+                    // 复数解的情况，这里我们暂时只显示实数情况
+                    document.getElementById('roots').innerHTML = '方程无实数解';
+                }
+            }
+
+            // 显示系数值
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+
+            const aSpan = document.getElementById('aValue');
+            const bSpan = document.getElementById('bValue');
+            const cSpan = document.getElementById('cValue');
+
+            aSpan.textContent = a;
+            bSpan.textContent = b;
+            cSpan.textContent = c;
+
+            // 绘制图像
+            drawFunction(a, b, c);
+        }
+
+        function testCase() {
+            // 测试案例
+            console.log("测试案例：");
+            solveEquation();
+        }
+
+        // 绘制函数图像的函数
+        function drawFunction(a, b, c) {
+            const canvas = document.getElementById('graphCanvas');
+            const ctx = canvas.getContext('2d');
+
+            if (a === 0) {
+                // 如果是一次方程，绘制直线
+                return;
+            }
+
+            // 设置绘图范围和比例
+            const xMin = -10;
+            const xMax = 10;
+            const yMin = -50;
+            const yMax = 50;
+
+            // 绘制坐标轴
+            ctx.beginPath();
+            ctx.moveTo(xMin, yMin);
+            ctx.lineTo(xMax, yMax);
+            ctx.strokeStyle = '#ccc';
+            ctx.stroke();
+
+            // 绘制函数图像
+            for (let x = xMin; x <= xMax; x += 0.1) {
+                const y = a * x * x + b * x + c;
+                if (y > yMax) {
+                    continue;
+                }
+                if (y < yMin) {
+                    continue;
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 0.2, y);
+                ctx.strokeStyle = '#4285f4';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+    </script>
+</body>
+</html>
