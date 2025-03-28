@@ -2,126 +2,63 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>二次方程求根器</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        input, textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 4px;
-        }
-        h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-    </style>
+    <title>二次方程求解器</title>
 </head>
 <body>
     <div class="container">
-        <h3>求解二次方程ax² + bx + c = 0</h3>
+        <h2>二次方程求解器</h2>
 
-        <div style="margin-bottom: 10px;">
-            a的值：<input type="number" id="a" placeholder="请输入a的值" required>
+        <!-- 输入框 -->
+        <div style="margin: 10px 0;">
+            <input type="number" id="a" placeholder="系数 a" required>
+            <span style="margin-right: 10px;">x² + </span>
+            <input type="number" id="b" placeholder="系数 b" required>
+            <span style="margin-right: 10px;">x + </span>
+            <input type="number" id="c" placeholder="常数项 c" required>
         </div>
 
-        <div style="margin-bottom: 10px;">
-            b的值：<input type="number" id="b" placeholder="请输入b的值" required>
-        </div>
+        <!-- 求解按钮 -->
+        <button onclick="solveEquation()" style="margin-top: 20px; padding: 8px 16px; background-color: #4CAF50;
+color: white; border: none;">解决</button>
 
-        <div style="margin-bottom: 10px;">
-            c的值：<input type="number" id="c" placeholder="请输入c的值" required>
-        </div>
-
-        <button onclick="solveEquation()">求解</button>
-
-        <div class="result" id="result"></div>
+        <!-- 结果输出 -->
+        <div id="result" style="margin-top: 20px;"></div>
     </div>
-</body>
-<script>
-function solveEquation() {
-    const a = parseFloat(document.getElementById('a').value);
-    const b = parseFloat(document.getElementById('b').value);
-    const c = parseFloat(document.getElementById('c').value);
 
-    if (a === 0) {
-        // 如果是线性方程
-        if (b === 0) {
-            if (c === 0) {
-                document.getElementById('result').innerHTML = "所有实数都是解";
+    <script>
+        function solveEquation() {
+            // 获取输入值
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+
+            // 计算判别式
+            const discriminant = b * b - 4 * a * c;
+
+            let result = [];
+
+            if (discriminant >= 0) {
+                const sqrtD = Math.sqrt(discriminant);
+                const x1 = (-b + sqrtD) / (2 * a);
+                const x2 = (-b - sqrtD) / (2 * a);
+                result.push(`x₁ = ${x1.toFixed(2)}`);
+                result.push(`x₂ = ${x2.toFixed(2)}`);
             } else {
-                document.getElementById('result').innerHTML = "无解";
+                const sqrtD = Math.sqrt(-discriminant);
+                const realPart = (-b) / (2 * a);
+                const imagPart = sqrtD / (2 * a);
+                result.push(`x₁ = ${realPart.toFixed(2)} + ${imagPart.toFixed(2)}i`);
+                result.push(`x₂ = ${realPart.toFixed(2)} - ${imagPart.toFixed(2)}i`);
             }
-        } else {
-            const x = -c / b;
-            document.getElementById('result').innerHTML = `x = ${x}`;
+
+            // 显示方程和结果
+            const equation = `ax² + bx + c = 0, 其中 a=${a}, b=${b}, c=${c}`;
+            document.getElementById('result').innerHTML = `<div>方程：${equation}</div><div>解为：
+</div><div>${result.join('\n')}</div>`;
         }
-        return;
-    }
 
-    const discriminant = b * b - 4 * a * c;
-    let sqrtD;
-
-    if (discriminant >= 0) {
-        sqrtD = Math.sqrt(discriminant);
-    } else {
-        sqrtD = Math.sqrt(-discriminant); // 计算虚数部分
-        const sign = discriminant < 0 ? '-' : '';
-        document.getElementById('result').innerHTML += `i ${sqrtD}`;
-    }
-
-    let x1, x2;
-
-    if (discriminant >= 0) {
-        x1 = (-b + sqrtD) / (2 * a);
-        x2 = (-b - sqrtD) / (2 * a);
-    } else {
-        // 虚数解
-        const imaginaryPart = sqrtD / (2 * Math.abs(a));
-        document.getElementById('result').innerHTML += `<i>$-b/(2a)</i> ± $imaginaryPart i`;
-    }
-
-    if (discriminant < 0) {
-        const realPart = (-b) / (2 * a);
-        document.getElementById('result').innerHTML += `x = ${realPart}`;
-    } else {
-        // 显示实数解
-        document.getElementById('result').innerHTML =
-            `x₁ = ${x1.toFixed(2)}` +
-            (x2 === x1 ? '' : `, x₂ = ${x2.toFixed(2)})`;
-    }
-}
-
-// 初始调用
-solveEquation();
-</script>
+        // 初始化
+        window.onload = solveEquation;
+    </script>
+</body>
 </html>
