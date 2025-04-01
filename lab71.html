@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programming Basics</title>
+</head>
+<body>
+    <h2>Arithmetic Operators</h2>
+    <p>+, -, *, /, %, **, typeof, ~~</p>
+
+    <h2>Bitwise Operators</h2>
+    <p>&, |, ~</p>
+
+    <h2>Comparison Operators</h2>
+    <p>>, >=, ==, ===, !=, !==</p>
+
+    <h2>Logical Operators</h2>
+    <p>&&, ||, !</p>
+
+    <h2>Selection</h2>
+    <p>1-way, 2-way, multi-way: switch-case-break-default</p>
+
+    <h2>Loop</h2>
+    <p>for(I, T, U) S, | while(T) { S, U },</p>
+    <p>do-while loop: |, do { S, U } while(T);</p>
+
+    <h2>The "break" keyword in loop control</h2>
+    <p>virtual infinite loop: while(true) f(;;) = f(;true;)</p>
+    <p>Each iteration contains a conditional break</p>
+    <pre>
+let i = 1, s = 0;
+while (true) {
+    s += i++; // (s = s + i, i = i + 1)
+    if (i == 11) break;
+}
+    </pre>
+
+    <h2>The "continue" keyword in loop control</h2>
+    <p>nice comparison: "break" = drop out college, but "continue" = leave but will come back</p>
+    <p>continue: quit the rest instruction in the current iteration, and go on to the next iteration</p>
+    <pre>
+for(;;) {
+    Task 1;
+    if (T) {
+        Task 2; 
+    }
+}
+    </pre>
+    <pre>
+rewrite to
+for(;;) {
+    Task1;
+    if (!T) continue;
+    Task2;
+}
+    </pre>
+
+    <h2>Add all even numbers in [0, 100]</h2>
+    <pre>
+s = 0, i = 0;
+for(;;) {
+    if (i % 2 == 0)
+        s += i;
+    i++;
+    if (i > 100) break;
+}
+    </pre>
+    <pre>
+for(;;) {
+    if (i % 2 == 1) { i++; continue; }
+    s += i;
+    i++;
+    if (i > 100) break;
+}
+    </pre>
+
+    <h2>List in JavaScript == C's array + linked list</h2>
+    <p>resizable, dynamic</p>
+    <pre>
+let a = [];
+let b = [1, 3, 4];
+let c = new Array(10); // [Null*0]
+    </pre>
+
+    <h2>Array Operations</h2>
+    <p>add on tail: a.push(2)</p>
+    <p>remove from tail: let y = a.pop()</p>
+    <p>remove from middle: a.splice(startingIndex, numberOfElementsToRemove) e.g.</p>
+    <p>a.splice(2, 4); // starting from index 2, remove 4 elements</p>
+    <p>insert into somewhere in middle</p>
+    <p>a.splice(2, 0, 4);</p>
+
+    <h2>To make dynamic web contents</h2>
+    <pre>
+let str = [];
+str.push("&lt;div");
+str.push(a1);
+str.push(b2);
+str.push("dfgfgf");
+let htmlcode = str.join("");
+    </pre>
+</body>
+</html>
