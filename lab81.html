@@ -10,19 +10,20 @@
             line-height: 1.6;
             margin: 20px;
         }
-        textarea {
-            width: 100%;
-            height: 500px;
+        pre {
+            background-color: #f4f4f4;
             padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
             border-radius: 5px;
-            resize: vertical;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        p {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <textarea>
+    <pre>
 function solve() {
     let a = document.getElementById('a');
     let b = document.getElementById('b');
@@ -68,24 +69,28 @@ function solve() {
         }
     }
 }
+    </pre>
 
-similar to C's struct
-python's dictionary
-PHP associative array
-Java's map
-c++'s class/map/hashmap
+    <p>similar to C's struct</p>
+    <p>python's dictionary</p>
+    <p>PHP associative array</p>
+    <p>Java's map</p>
+    <p>c++'s class/map/hashmap</p>
 
-object: any -> any type
-key -> value
-object is a collection of key-value pairs
+    <p>object: any -> any type</p>
+    <p>key -> value</p>
+    <p>object is a collection of key-value pairs</p>
 
+    <pre>
 let x = {};
 let y = {a:1, b:2.5, c: 100}; // similar to CSS
 let z = {"a c":1, "bz":2.5, "c":100};
 attribute = field = key
+    </pre>
 
-It is not necessary for all values to have the same type. Object can be inhomogeneous
+    <p>It is not necessary for all values to have the same type. Object can be inhomogeneous</p>
 
+    <pre>
 var studentrecord = {
     id: "D1003435",
     name: "John Smith",
@@ -96,13 +101,16 @@ var studentrecord = {
 };
 
 studentrecord.register(1, "abc");
-studentrecord also can be viewed as a family name
-using family name is to promote software reusability by reducing the chance of name collision
+    </pre>
 
-studentrecord.keys
-studentrecord.values
-studentrecord.entries
+    <p>studentrecord also can be viewed as a family name</p>
+    <p>using family name is to promote software reusability by reducing the chance of name collision</p>
 
+    <p>studentrecord.keys</p>
+    <p>studentrecord.values</p>
+    <p>studentrecord.entries</p>
+
+    <pre>
 for (let key in studentrecord) // iteration/traversal/going through
 {
     console.log(studentrecord.key);
@@ -113,6 +121,6 @@ for (let value of studentrecord) // iteration/traversal/going through
 {
     console.log(value);
 }
-    </textarea>
+    </pre>
 </body>
 </html>
