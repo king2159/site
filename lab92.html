@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balloon Animation Code</title>
+    <title>Code Display</title>
 </head>
 <body>
     <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Balloon Animation Code&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;pre&gt;
-&lt;style&gt;
+<style>
 @keyframes fly {
     from { height:700px }
     to{height:0px}
 }
-&lt;/style&gt;
+</style>
 
-&lt;script&gt;
+<script>
 function Balloon(id, color1, diameter, speed) {
     this.color = color1;
     this.diameter = diameter;
@@ -47,10 +38,7 @@ function Balloon(id, color1, diameter, speed) {
 let b = new Balloon(1, 'red', 200, 1);
 b.make();
 b.rise();
-&lt;/script&gt;
-    &lt;/pre&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+</script>
     </pre>
 </body>
 </html>
