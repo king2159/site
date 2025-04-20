@@ -3,42 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Display</title>
+    <title>Text Display</title>
 </head>
 <body>
     <pre>
-<style>
-@keyframes fly {
-    from { height:700px }
-    to{height:0px}
+function allprimes(n)
+{
+    let list = [];
+    for (let k = 2; k < n; k++)
+    {
+        let isprime = true;
+        for (let p of list)
+        {
+            if ( p >= Math.sqrt(k)) break;
+            if (k % p === 0)
+            {
+                isprime = false;
+                break;
+            }
+        }
+        if (isprime)
+        {
+            console.log(k);
+        }
+    }
 }
-</style>
 
-<script>
-function Balloon(id, color1, diameter, speed) {
-    this.color = color1;
-    this.diameter = diameter;
-    this.speed = speed;
+var obj = {
+    id:"D1000454",
+    age:16
+}
+
+var obj = {
+    "myId":"D1000454",
+    age:16
+};
+
+let id = 0;
+var obj = {
+    id:"D1000454",
+    age:16,
+    add:function(i,a){ obj.id = i; obj.age = a; }
+};
+
+let id = 0;
+var student = {
+    id:"D1000454",
+    age:16,
+    set:function(i,a){ obj.id = i; obj.age = a; }
+};
+
+var student = {
+    id:"D1000454",
+    age:16,
+    set:function(i,a){ obj.id = i; obj.age = a; }
+};
+
+var another = Object.create(student);
+another.set("D234324", 20);
+
+var another = Object.create(student);
+another.set("D234324", 20);
+another.prototype.log =
+function(){ console.log(another.id + another.age); };
+another.log();
+
+let id = 0;
+var student = {
+    id:"D1000454",
+    age:16,
+    set:function(i,a){ obj.id = i; obj.age = a; }
+};
+var another = Object.create(student);
+another.set("D234324", 20);
+another.prototype.log =
+function(){ console.log(another.id + another.age); };
+another.log();
+
+constructor function
+what is an object?
+An object is an instance of class
+
+function Student(id, name, age)
+{
     this.id = id;
-
-    this.make = function() {
-        let dv = document.createElement('div');
-        dv.id = id;
-        dv.style.cssText = 'width:' + this.diameter + 'px; height:' + this.diameter + 'px; border-radius:' + (diameter/2) + 'px; background-color:' + this.color + '; position:absolute; left:' + (id*50) + 'px; top:700px';
-        document.body.appendChild(dv);
-    }
-
-    this.rise = function() {
-        let dv = document.getElementById('d' + this.id);
-        dv.style.animationName = "fly";
-        dv.style.animationDuration = ~~(700/this.speed) + 's';
+    this.name = name;
+    this.age = age;
+    this.set = function(i, a)
+    {
+        this.id = i; this.age = a;
     }
 }
 
-let b = new Balloon(1, 'red', 200, 1);
-b.make();
-b.rise();
-</script>
+let student1 = new Student();
+let s1 = new Student();
     </pre>
 </body>
 </html>
