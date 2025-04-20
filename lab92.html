@@ -70,19 +70,19 @@ b.rise();
             this.make = function() {
                 let dv = document.createElement('div');
                 dv.id = id;
-                dv.style.cssText = 'width:' + this.diameter + 'px; height:' + this.diameter + 'px; border-radius:' + (diameter/2) + 'px; background-color:' + this.color + '; position:absolute; left:' + Math.floor(Math.random() * window.innerWidth) + 'px; top:700px';
+                dv.style.cssText = 'width:' + this.diameter + 'px; height:' + this.diameter + 'px; border-radius:' + (diameter/2) + 'px; background-color:' + this.color + '; position:absolute; left:' + (id*50) + 'px; top:700px';
                 document.body.appendChild(dv);
             }
 
             this.rise = function() {
-                let dv = document.getElementById(this.id);
+                let dv = document.getElementById('d' + this.id);
                 dv.style.animationName = "fly";
                 dv.style.animationDuration = ~~(700/this.speed) + 's';
             }
         }
 
-        // 创建100万个气球
-        for(let i = 0; i < 1000000; i++) {
+        // 创建10万个气球
+        for(let i = 0; i < 100000; i++) {
             let color = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
             let balloon = new Balloon(i, color, 50, 1);
             balloon.make();
